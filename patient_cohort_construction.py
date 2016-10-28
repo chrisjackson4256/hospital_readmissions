@@ -89,12 +89,30 @@ for col in bool_columns:
     full_df[col] = full_df[col].astype(int)
 
 # reorder columns
-full_df = full_df[bool_columns + ['admdt', 'pt_id'] + continuous_list]
+#full_df = full_df[bool_columns + ['admdt', 'pt_id'] + continuous_list]
 
 # keep only a handful of features (for the DNN model)
-full_df = full_df[['re30_0hr', 'so_age', 'hi_edvis_sum_365d',
+#full_df = full_df[['re30_0hr', 'so_age', 'hi_edvis_sum_365d',
+#                   'hi_hspadm_sum_365d', 'vi_sysbp_max_adm_24',
+#                   'vi_diasbp_min_adm_24', 'vi_pulse_min_adm_24',
+#                   'admdt', 'pt_id']]
+
+# the most significant features
+full_df = full_df[['re30_0hr',
+                   'so_age', 'icd9or10_ami_365d_inp', 'icd9or10_pvd_365d_inp',
+                   'icd9or10_copd_365d_inp','icd9or10_ctd_365d_inp',
+                   'icd9or10_mildliver_365d_inp', 'icd9or10_diabwocc_365d_inp',
+                   'icd9or10_renal_365d_inp','icd9or10_lymphoma_365d_inp',
+                   'icd9or10_sevmodliver_365d_inp', 'hi_edvis_sum_365d',
                    'hi_hspadm_sum_365d', 'vi_sysbp_max_adm_24',
-                   'vi_diasbp_min_adm_24', 'vi_pulse_min_adm_24',
+                   'vi_diasbp_min_adm_24', 'vi_pulse_max_adm_24',
+                   'vi_pulse_min_adm_24', 'vi_resp_max_adm_24',
+                   'vi_resp_min_adm_24', 'la_hct_max_adm_24',
+                   'la_sod_max_adm_24', 'la_sod_min_adm_24',
+                   'la_wbc_max_adm_24', 'la_alb_min_adm_24',
+                   'la_gluc_min_adm_24', 'la_pot_min_adm_24',
+                   'la_bun_max_adm_24', 'la_bun_min_adm_24',
+                   'la_plats_max_adm_24', 'la_lymphabs_max_adm_24',
                    'admdt', 'pt_id']]
 
 # split data into training/validation/testing sets
